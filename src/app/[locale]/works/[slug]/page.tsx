@@ -2,15 +2,25 @@ import works from '@/data/works.json';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Lightbox from '@/components/Lightbox';
+import { useTranslation } from '@/i18n/useTranslation';
+import { Locale } from '@/i18n/translations';
 
 export async function generateStaticParams() {
-    return works.map((work) => ({
-        slug: work.slug,
-    }));
+    const locales: Locale[] = ['it', 'en'];
+    const params: { locale: Locale; slug: string }[] = [];
+
+    locales.forEach(locale => {
+        works.forEach(work => {
+            params.push({ locale, slug: work.slug });
+        });
+    });
+
+    return params;
 }
 
-export default async function WorkPage({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = await params;
+export default async function WorkPage({ params }: { params: Promise<{ slug: string; locale: Locale }> }) {
+    const { slug, locale } = await params;
+    const { t } = useTranslation(locale);
     const work = works.find((w) => w.slug === slug);
 
     if (!work) {
@@ -22,13 +32,13 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
             <div className="container mx-auto px-6 py-16">
                 {/* Back Link */}
                 <Link
-                    href="/works"
+                    href={`/${locale}/works`}
                     className="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-gray-400 hover:text-white transition-colors mb-12 group"
                 >
                     <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
-                    Back to Works
+                    {t.works.backToWorks}
                 </Link>
 
                 <div className="max-w-6xl mx-auto">
@@ -53,13 +63,13 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
                                 <div className="mb-8 pb-8 border-b border-gray-800">
                                     {work.venue.event && (
                                         <p className="text-lg text-gray-300 mb-2">
-                                            <span className="text-gray-500 text-sm uppercase tracking-wider block mb-1">Evento</span>
+                                            <span className="text-gray-500 text-sm uppercase tracking-wider block mb-1">{t.works.event}</span>
                                             {work.venue.event}
                                         </p>
                                     )}
                                     {work.venue.name && (
                                         <p className="text-lg text-gray-300 mb-2">
-                                            <span className="text-gray-500 text-sm uppercase tracking-wider block mb-1">Venue</span>
+                                            <span className="text-gray-500 text-sm uppercase tracking-wider block mb-1">{t.works.venue}</span>
                                             {work.venue.name}
                                         </p>
                                     )}
@@ -74,7 +84,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
                             {/* Credits */}
                             {work.credits && work.credits.length > 0 && (
                                 <div className="mb-8 pb-8 border-b border-gray-800">
-                                    <h3 className="text-gray-500 text-sm uppercase tracking-wider mb-4">Credits</h3>
+                                    <h3 className="text-gray-500 text-sm uppercase tracking-wider mb-4">{t.works.credits}</h3>
                                     <div className="space-y-2">
                                         {work.credits.map((credit, index) => (
                                             <p key={index} className="text-gray-300">
@@ -90,7 +100,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
                             {work.duration && (
                                 <div className="mb-8 pb-8 border-b border-gray-800">
                                     <p className="text-gray-300">
-                                        <span className="text-gray-500 text-sm uppercase tracking-wider">Durata</span>
+                                        <span className="text-gray-500 text-sm uppercase tracking-wider">{t.works.duration}</span>
                                         <span className="ml-2 font-medium text-white">{work.duration}</span>
                                     </p>
                                 </div>
@@ -99,7 +109,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
                             {/* Ensembles */}
                             {work.ensembles && work.ensembles.length > 0 && (
                                 <div>
-                                    <h3 className="text-gray-500 text-sm uppercase tracking-wider mb-3">Ensemble</h3>
+                                    <h3 className="text-gray-500 text-sm uppercase tracking-wider mb-3">{t.works.ensemble}</h3>
                                     {work.ensembles.map((ensemble, index) => (
                                         <p key={index} className="text-white font-medium text-lg mb-2">
                                             {ensemble}
@@ -112,7 +122,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
 
                     {/* Gallery Section */}
                     <div>
-                        <h2 className="text-2xl font-bold uppercase tracking-widest mb-8 text-center">Gallery</h2>
+                        <h2 className="text-2xl font-bold uppercase tracking-widest mb-8 text-center">{t.works.gallery}</h2>
                         {work.media && work.media.length > 0 ? (
                             <Lightbox images={work.media} alt={work.title} />
                         ) : (

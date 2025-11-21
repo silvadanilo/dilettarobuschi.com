@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Diletta Robuschi | Director",
-  description: "Portfolio of Movie Director Diletta Robuschi",
+  title: "Diletta Robuschi - Director",
+  description: "Visual storytelling for commercials, music videos, and film",
 };
 
 export default function RootLayout({
@@ -17,13 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased flex flex-col min-h-screen`}>
-        <Header />
-        <main className="flex-grow pt-20">
-          {children}
-        </main>
-        <Footer />
+    <html lang="it" className={inter.className}>
+      <body className="flex flex-col min-h-screen">
+        {children}
       </body>
     </html>
   );

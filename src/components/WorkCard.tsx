@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { Locale } from '@/i18n/translations';
 
 interface WorkProps {
     id: string;
@@ -8,9 +9,9 @@ interface WorkProps {
     thumbnail: string;
 }
 
-export default function WorkCard({ work }: { work: WorkProps }) {
+export default function WorkCard({ work, locale }: { work: WorkProps; locale: Locale }) {
     return (
-        <Link href={`/works/${work.slug}`} className="group block">
+        <Link href={`/${locale}/works/${work.slug}`} className="group block">
             <div className="relative aspect-video overflow-hidden bg-gray-900 mb-4 rounded-lg">
                 <Image
                     src={work.thumbnail}

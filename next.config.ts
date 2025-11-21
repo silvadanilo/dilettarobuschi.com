@@ -1,4 +1,3 @@
-```typescript
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
@@ -10,12 +9,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  i18n: {
-    locales: ['it', 'en'],
-    defaultLocale: 'it',
-    localeDetection: false,
-  },
 };
 
 export default nextConfig;
-```
