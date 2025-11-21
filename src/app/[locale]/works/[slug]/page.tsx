@@ -1,4 +1,4 @@
-import works from '@/data/works.json';
+import { getWorks, getWork } from '@/lib/works';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Lightbox from '@/components/Lightbox';
@@ -8,6 +8,7 @@ import { Locale } from '@/i18n/translations';
 export async function generateStaticParams() {
     const locales: Locale[] = ['it', 'en'];
     const params: { locale: Locale; slug: string }[] = [];
+    const works = getWorks();
 
     locales.forEach(locale => {
         works.forEach(work => {
@@ -21,7 +22,7 @@ export async function generateStaticParams() {
 export default async function WorkPage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
     const { slug, locale } = await params;
     const { t } = useTranslation(locale as Locale);
-    const work = works.find((w) => w.slug === slug);
+    const work = getWork(slug);
 
     if (!work) {
         notFound();

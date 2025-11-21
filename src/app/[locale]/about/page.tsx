@@ -12,7 +12,7 @@ export const metadata = {
 };
 
 function getAboutContent(locale: Locale) {
-    const contentPath = join(process.cwd(), 'src', 'content', `about.${locale}.md`);
+    const contentPath = join(process.cwd(), 'src', 'content', `about.${locale}.mdoc`);
     const fileContent = readFileSync(contentPath, 'utf-8');
     const { data, content } = matter(fileContent);
 

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import works from '@/data/works.json';
+import { getWorks } from '@/lib/works';
 import WorkCard from '@/components/WorkCard';
 import { useTranslation } from '@/i18n/useTranslation';
 import { Locale } from '@/i18n/translations';
@@ -8,6 +8,7 @@ import { Locale } from '@/i18n/translations';
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const { t } = useTranslation(locale as Locale);
+  const works = getWorks();
   const featuredWorks = works.slice(0, 3);
 
   return (

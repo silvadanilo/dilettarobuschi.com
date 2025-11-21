@@ -1,4 +1,4 @@
-import works from '@/data/works.json';
+import { getWorks } from '@/lib/works';
 import WorkCard from '@/components/WorkCard';
 import { useTranslation } from '@/i18n/useTranslation';
 import { Locale } from '@/i18n/translations';
@@ -11,6 +11,7 @@ export const metadata = {
 export default async function WorksPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
     const { t } = useTranslation(locale as Locale);
+    const works = getWorks();
 
     return (
         <div className="container mx-auto px-6 pt-32 pb-12">
