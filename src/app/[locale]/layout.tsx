@@ -11,15 +11,15 @@ export default async function LocaleLayout({
     params,
 }: {
     children: React.ReactNode;
-    params: Promise<{ locale: Locale }>;
+    params: Promise<{ locale: string }>;
 }) {
     const { locale } = await params;
 
     return (
         <>
-            <Header locale={locale} />
-            <main className="pt-20">{children}</main>
-            <Footer locale={locale} />
+            <Header locale={locale as Locale} />
+            <main>{children}</main>
+            <Footer locale={locale as Locale} />
         </>
     );
 }

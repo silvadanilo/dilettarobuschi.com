@@ -18,18 +18,19 @@ export async function generateStaticParams() {
     return params;
 }
 
-export default async function WorkPage({ params }: { params: Promise<{ slug: string; locale: Locale }> }) {
+export default async function WorkPage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
     const { slug, locale } = await params;
-    const { t } = useTranslation(locale);
+    const { t } = useTranslation(locale as Locale);
     const work = works.find((w) => w.slug === slug);
 
     if (!work) {
         notFound();
+        return null;
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black">
-            <div className="container mx-auto px-6 py-16">
+        <div className="min-h-screen">
+            <div className="container mx-auto px-6 pt-32 pb-16">
                 {/* Back Link */}
                 <Link
                     href={`/${locale}/works`}
@@ -52,7 +53,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
 
                     {/* Description Section */}
                     <div className="mb-16 max-w-3xl mx-auto">
-                        <div className="bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 md:p-12">
+                        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12">
                             {/* Main Description */}
                             <p className="text-xl text-gray-200 leading-relaxed mb-8 italic">
                                 {work.description}
@@ -60,7 +61,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
 
                             {/* Venue Information */}
                             {work.venue && (
-                                <div className="mb-8 pb-8 border-b border-gray-800">
+                                <div className="mb-8 pb-8 border-b border-white/10">
                                     {work.venue.event && (
                                         <p className="text-lg text-gray-300 mb-2">
                                             <span className="text-gray-500 text-sm uppercase tracking-wider block mb-1">{t.works.event}</span>
@@ -83,7 +84,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
 
                             {/* Credits */}
                             {work.credits && work.credits.length > 0 && (
-                                <div className="mb-8 pb-8 border-b border-gray-800">
+                                <div className="mb-8 pb-8 border-b border-white/10">
                                     <h3 className="text-gray-500 text-sm uppercase tracking-wider mb-4">{t.works.credits}</h3>
                                     <div className="space-y-2">
                                         {work.credits.map((credit, index) => (
@@ -98,7 +99,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
 
                             {/* Duration */}
                             {work.duration && (
-                                <div className="mb-8 pb-8 border-b border-gray-800">
+                                <div className="mb-8 pb-8 border-b border-white/10">
                                     <p className="text-gray-300">
                                         <span className="text-gray-500 text-sm uppercase tracking-wider">{t.works.duration}</span>
                                         <span className="ml-2 font-medium text-white">{work.duration}</span>
@@ -108,13 +109,36 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
 
                             {/* Ensembles */}
                             {work.ensembles && work.ensembles.length > 0 && (
-                                <div>
+                                <div className="mb-8 pb-8 border-b border-white/10">
                                     <h3 className="text-gray-500 text-sm uppercase tracking-wider mb-3">{t.works.ensemble}</h3>
                                     {work.ensembles.map((ensemble, index) => (
                                         <p key={index} className="text-white font-medium text-lg mb-2">
                                             {ensemble}
                                         </p>
                                     ))}
+                                </div>
+                            )}
+
+                            {/* External Links */}
+                            {(work as any).links && (work as any).links.length > 0 && (
+                                <div>
+                                    <h3 className="text-gray-500 text-sm uppercase tracking-wider mb-3">Link</h3>
+                                    <div className="space-y-3">
+                                        {(work as any).links.map((link: any, index: number) => (
+                                            <a
+                                                key={index}
+                                                href={link.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors group w-fit"
+                                            >
+                                                <span className="font-medium">{link.label}</span>
+                                                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                </svg>
+                                            </a>
+                                        ))}
+                                    </div>
                                 </div>
                             )}
                         </div>

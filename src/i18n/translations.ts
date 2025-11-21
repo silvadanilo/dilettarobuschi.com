@@ -30,6 +30,7 @@ export const translations = {
             getInTouch: 'Mettiamoci in contatto',
             email: 'Email',
             socialLinks: 'Link Social',
+            description: 'Per richieste, collaborazioni o semplicemente per un saluto, scrivimi una email.',
         },
     },
     en: {
@@ -63,6 +64,7 @@ export const translations = {
             getInTouch: 'Get in touch',
             email: 'Email',
             socialLinks: 'Social Links',
+            description: 'For inquiries, collaborations, or just to say hello, please reach out via email.',
         },
     },
 } as const;

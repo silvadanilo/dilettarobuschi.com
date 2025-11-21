@@ -22,14 +22,14 @@ function getAboutContent(locale: Locale) {
     };
 }
 
-export default async function AboutPage({ params }: { params: Promise<{ locale: Locale }> }) {
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
-    const { t } = useTranslation(locale);
-    const { image, content } = getAboutContent(locale);
+    const { t } = useTranslation(locale as Locale);
+    const { image, content } = getAboutContent(locale as Locale);
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black">
-            <div className="container mx-auto px-6 py-16">
+        <div className="min-h-screen">
+            <div className="container mx-auto px-6 pt-32 pb-16">
                 <div className="max-w-6xl mx-auto">
                     {/* Two Column Layout */}
                     <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 mb-16">
@@ -52,7 +52,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
                         {/* Content Column - Takes 3 columns */}
                         <div className="lg:col-span-3">
-                            <div className="bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 md:p-12">
+                            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12">
                                 <MarkdownRenderer content={content} />
                             </div>
                         </div>

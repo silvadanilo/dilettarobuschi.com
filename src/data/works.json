@@ -3,17 +3,59 @@
         "id": "1",
         "title": "Il ballo delle ingrate - the body of emancipation",
         "slug": "il-ballo-delle-ingrate-the-body-of-emancipation",
-        "thumbnail": "https://files.supersite.aruba.it/media/18328_2e6b57b63b9cb03a2bdd23f439099ab7624f95e0.jpeg/v1/x_139,y_0,w_775,h_700,dpr_2/2e6b57b63b9cb03a2bdd23f439099ab7624f95e0.webp",
-        "description": "Cortometraggio, screendance. Ispirato al Ballo delle ingrate di Claudio Monteverdi.",
+        "thumbnail": "https://files.supersite.aruba.it/media/18328_f233be7a41c627ca61d2b70b20f6a04d342fbc5e.jpeg/v1/w_1842,h_0,dpr_2/f233be7a41c627ca61d2b70b20f6a04d342fbc5e.webp",
+        "description": "Ispirato al Ballo delle ingrate di Claudio Monteverdi. Cortometraggio, screendance realizzato per il concorso La danza in 1 minuto - International Screendance Contest 2023, Associazione Coorpi di Torino.",
         "duration": "1 minuto, 10 secondi",
         "venue": {
-            "event": "La danza in 1 minuto - International Screendance Contest 2023"
+            "event": "La danza in 1 minuto - International Screendance Contest 2023",
+            "name": "Auditorium Teatrodanza",
+            "location": "Cremona, IT"
         },
+        "credits": [
+            {
+                "role": "Regia e sceneggiatura",
+                "name": "Diletta Robuschi"
+            },
+            {
+                "role": "Musica e luci",
+                "name": "Tommaso Olivieri"
+            },
+            {
+                "role": "Riprese",
+                "name": "Lorenzo Antoniazzi"
+            },
+            {
+                "role": "Montaggio",
+                "name": "Lorenzo Antoniazzi, Diletta Robuschi"
+            },
+            {
+                "role": "Coreografia",
+                "name": "Paola Posa"
+            },
+            {
+                "role": "Cast",
+                "name": "Sofia Carotti, Marta Cataldi, Gloria Gennari"
+            },
+            {
+                "role": "Body painting",
+                "name": "Elisa Bolzoni"
+            }
+        ],
+        "ensembles": [
+            "PosainOpera Company"
+        ],
+        "links": [
+            {
+                "label": "FilmFreeway",
+                "url": "https://filmfreeway.com/Ilballodelleingrate-thebodyofemancipation"
+            }
+        ],
         "media": [
             "https://files.supersite.aruba.it/media/18328_f233be7a41c627ca61d2b70b20f6a04d342fbc5e.jpeg/v1/w_0,h_0,dpr_2/f233be7a41c627ca61d2b70b20f6a04d342fbc5e.webp",
             "https://files.supersite.aruba.it/media/18328_afd2f02f9233bf60d386b6063fb53c49721c40db.jpeg/v1/w_0,h_0,dpr_2/afd2f02f9233bf60d386b6063fb53c49721c40db.webp",
             "https://files.supersite.aruba.it/media/18328_2ff0407f190a3b9ad42e0102b6a208a6301ef974.jpeg/v1/w_0,h_0,dpr_2/2ff0407f190a3b9ad42e0102b6a208a6301ef974.webp",
-            "https://files.supersite.aruba.it/media/18328_571cfb72f60d3a47012ec3fc1895c0d6f14b5be5.jpeg/v1/w_0,h_0,dpr_2/571cfb72f60d3a47012ec3fc1895c0d6f14b5be5.webp"
+            "https://files.supersite.aruba.it/media/18328_571cfb72f60d3a47012ec3fc1895c0d6f14b5be5.jpeg/v1/w_0,h_0,dpr_2/571cfb72f60d3a47012ec3fc1895c0d6f14b5be5.webp",
+            "https://files.supersite.aruba.it/media/18328_1c491397f287ddff7b5022e351a6dcc8bfb9bf2d.jpeg/v1/w_0,h_0,dpr_2/1c491397f287ddff7b5022e351a6dcc8bfb9bf2d.webp"
         ]
     },
     {
@@ -52,6 +94,16 @@
         "ensembles": [
             "I Bassifondi",
             "Compagnia di danza Déjà Donné"
+        ],
+        "links": [
+            {
+                "label": "Evento",
+                "url": "https://www.teatroponchielli.it/spettacolo/voi-damor-ribelle-monteverdi-festival-cremona-2024/"
+            },
+            {
+                "label": "Teaser",
+                "url": "https://vimeo.com/1035608848"
+            }
         ],
         "media": [
             "https://files.supersite.aruba.it/media/18328_f57111a152e81241295ef5f7f429d3c725393925.jpeg/v1/w_0,h_0,dpr_2/f57111a152e81241295ef5f7f429d3c725393925.webp",
