@@ -17,7 +17,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   return (
     <div className="pb-12">
       {/* Hero Section */}
-      <section className="relative h-[80vh] md:min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+      <section className="relative h-[80vh] md:min-h-screen flex flex-col items-center justify-start pt-32 md:pt-40 text-center px-6 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
