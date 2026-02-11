@@ -78,6 +78,14 @@ export default config({
             schema: {
                 title: fields.slug({ name: { label: 'Title' } }),
                 thumbnail: fields.text({ label: 'Thumbnail URL' }),
+                directorRole: fields.select({
+                    label: 'Director Role',
+                    options: [
+                        { label: 'Director (Regista)', value: 'director' },
+                        { label: 'Assistant Director (Aiuto Regista)', value: 'assistant' }
+                    ],
+                    defaultValue: 'director'
+                }),
                 description: fields.document({
                     label: 'Description',
                     formatting: true,

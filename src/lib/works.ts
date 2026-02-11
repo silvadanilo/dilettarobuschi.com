@@ -7,6 +7,7 @@ export interface Work {
     title: string;
     slug: string;
     thumbnail: string;
+    directorRole: 'director' | 'assistant';
     description: string;
     duration?: string;
     venue?: {
@@ -52,6 +53,7 @@ export function getWorks(): Work[] {
             slug: slug,
             title: data.title,
             thumbnail: data.thumbnail,
+            directorRole: data.directorRole || 'director',
             description: content.trim(), // Use the markdown content as description
             duration: data.duration,
             venue: data.venue,
@@ -82,6 +84,7 @@ export function getWork(slug: string): Work | undefined {
         slug: slug,
         title: data.title,
         thumbnail: data.thumbnail,
+        directorRole: data.directorRole || 'director',
         description: content.trim(),
         duration: data.duration,
         venue: data.venue,
