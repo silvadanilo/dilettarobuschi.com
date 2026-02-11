@@ -48,9 +48,10 @@ Dopo aver creato l'app, vedrai una pagina con i dettagli.
 ### 4. Configura Vercel
 1. Vai sul tuo progetto su Vercel.
 2. Vai su **Settings > Environment Variables**.
-3. Aggiungi queste due variabili:
+3. Aggiungi queste variabili:
    - `KEYSTATIC_GITHUB_CLIENT_ID`: Incolla il Client ID copiato prima.
    - `KEYSTATIC_GITHUB_CLIENT_SECRET`: Incolla il Client Secret copiato prima.
+   - `KEYSTATIC_SECRET`: Genera una stringa casuale sicura (puoi usare: `openssl rand -base64 32` nel terminale).
    - `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`: Incolla il nome della tua app (es. `diletta-robuschi-cms` - lo trovi nell'URL della pagina dell'app su GitHub).
 4. Rideploya il sito (o aspetta il prossimo push).
 
