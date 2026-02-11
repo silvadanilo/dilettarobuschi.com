@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
 import { getWorks } from '@/lib/works';
+import { getHomeContent } from '@/lib/home';
 import WorkCard from '@/components/WorkCard';
 import { useTranslation } from '@/i18n/useTranslation';
 import { Locale } from '@/i18n/translations';
@@ -9,6 +11,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const { locale } = await params;
   const { t } = useTranslation(locale as Locale);
   const works = getWorks();
+  const { heroImage, title, subtitle } = getHomeContent(locale as Locale);
   const featuredWorks = works.slice(0, 3);
 
   return (
@@ -18,7 +21,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://files.supersite.aruba.it/media/18328_2e6b57b63b9cb03a2bdd23f439099ab7624f95e0.jpeg/v1/w_1857,h_0,dpr_2/18328_2e6b57b63b9cb03a2bdd23f439099ab7624f95e0.webp"
+            src={heroImage}
             alt="Diletta Robuschi Hero"
             fill
             priority
@@ -30,11 +33,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
         <div className="relative z-20 animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-widest mb-6 text-white drop-shadow-lg">
-            {t.home.title}
+            {title}
           </h1>
-          <p className="text-sm md:text-base uppercase tracking-widest text-gray-200 max-w-md leading-relaxed mx-auto drop-shadow-md">
-            {t.home.subtitle}
-          </p>
+          <div className="text-sm md:text-base lg:text-lg tracking-[0.2em] text-gray-300 max-w-2xl mx-auto leading-relaxed font-light">
+            <ReactMarkdown components={{ p: ({ children }) => <p className="mb-0">{children}</p> }}>
+              {subtitle}
+            </ReactMarkdown>
+          </div>
         </div>
       </section>
 

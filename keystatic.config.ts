@@ -10,6 +10,34 @@ export default config({
             kind: 'local',
         },
     singletons: {
+        homeIt: singleton({
+            label: 'Home (Italian)',
+            path: 'src/content/home.it',
+            format: { contentField: 'subtitle' },
+            schema: {
+                heroImage: fields.text({ label: 'Hero Image URL' }),
+                title: fields.text({ label: 'Main Title' }),
+                subtitle: fields.document({
+                    label: 'Subtitle / Description',
+                    formatting: true,
+                    links: true,
+                }),
+            },
+        }),
+        homeEn: singleton({
+            label: 'Home (English)',
+            path: 'src/content/home.en',
+            format: { contentField: 'subtitle' },
+            schema: {
+                heroImage: fields.text({ label: 'Hero Image URL' }),
+                title: fields.text({ label: 'Main Title' }),
+                subtitle: fields.document({
+                    label: 'Subtitle / Description',
+                    formatting: true,
+                    links: true,
+                }),
+            },
+        }),
         aboutIt: singleton({
             label: 'About (Italian)',
             path: 'src/content/about.it',
