@@ -82,7 +82,7 @@ export default config({
                     label: 'Director Role',
                     options: [
                         { label: 'Director (Regista)', value: 'director' },
-                        { label: 'Assistant Director (Aiuto Regista)', value: 'assistant' }
+                        { label: 'Assistant to the Director (Assistente alla regia)', value: 'assistant' }
                     ],
                     defaultValue: 'director'
                 }),

@@ -14,7 +14,7 @@ export const translations = {
         works: {
             title: 'Lavori',
             directorWorks: 'Lavori (Regista)',
-            assistantDirectorWorks: 'Lavori (Aiuto Regista)',
+            assistantDirectorWorks: 'Lavori (Assistente alla regia)',
             backToWorks: 'Torna ai Lavori',
             gallery: 'Galleria',
             event: 'Evento',
@@ -50,7 +50,7 @@ export const translations = {
         works: {
             title: 'Works',
             directorWorks: 'Works (Director)',
-            assistantDirectorWorks: 'Works (Assistant Director)',
+            assistantDirectorWorks: 'Works (Assistant to the Director)',
             backToWorks: 'Back to Works',
             gallery: 'Gallery',
             event: 'Event',
