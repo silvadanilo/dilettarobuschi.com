@@ -15,7 +15,7 @@ export default config({
             path: 'src/content/home.it',
             format: { contentField: 'subtitle' },
             schema: {
-                heroImage: fields.text({ label: 'Hero Image URL' }),
+                heroImage: fields.image({ label: 'Hero Image', directory: 'public/images/home', publicPath: '/images/home/' }),
                 title: fields.text({ label: 'Main Title' }),
                 subtitle: fields.document({
                     label: 'Subtitle / Description',
@@ -29,7 +29,7 @@ export default config({
             path: 'src/content/home.en',
             format: { contentField: 'subtitle' },
             schema: {
-                heroImage: fields.text({ label: 'Hero Image URL' }),
+                heroImage: fields.image({ label: 'Hero Image', directory: 'public/images/home', publicPath: '/images/home/' }),
                 title: fields.text({ label: 'Main Title' }),
                 subtitle: fields.document({
                     label: 'Subtitle / Description',
@@ -43,7 +43,7 @@ export default config({
             path: 'src/content/about.it',
             format: { contentField: 'content' },
             schema: {
-                image: fields.text({ label: 'Image URL' }),
+                image: fields.image({ label: 'Profile Image', directory: 'public/images/about', publicPath: '/images/about/' }),
                 content: fields.document({
                     label: 'Content',
                     formatting: true,
@@ -77,7 +77,7 @@ export default config({
             format: { contentField: 'description' },
             schema: {
                 title: fields.slug({ name: { label: 'Title' } }),
-                thumbnail: fields.text({ label: 'Thumbnail URL' }),
+                thumbnail: fields.image({ label: 'Thumbnail', directory: 'public/images/works', publicPath: '/images/works/' }),
                 directorRole: fields.select({
                     label: 'Director Role',
                     options: [
@@ -113,7 +113,7 @@ export default config({
                     { label: 'External Links', itemLabel: props => props.fields.label.value }
                 ),
                 media: fields.array(
-                    fields.text({ label: 'Image URL' }),
+                    fields.image({ label: 'Gallery Image', directory: 'public/images/works', publicPath: '/images/works/' }),
                     { label: 'Media Gallery' }
                 ),
             },
