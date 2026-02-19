@@ -4,7 +4,7 @@ export default config({
     storage: process.env.NODE_ENV === 'production'
         ? {
             kind: 'github',
-            repo: 'silvadanilo/dilettarobuschi.com',
+            repo: 'dilerobuschi/dilettarobuschi.com',
         }
         : {
             kind: 'local',
