@@ -6,6 +6,7 @@ export interface Work {
     id: string;
     title: string;
     slug: string;
+    order: number;
     thumbnail: string;
     directorRole: 'director' | 'assistant';
     description: string;
@@ -52,6 +53,7 @@ export function getWorks(): Work[] {
             id: slug,
             slug: slug,
             title: data.title,
+            order: data.order ?? 0,
             thumbnail: data.thumbnail,
             directorRole: data.directorRole || 'director',
             description: content.trim(), // Use the markdown content as description
@@ -64,9 +66,13 @@ export function getWorks(): Work[] {
         } as Work;
     });
 
-    // Sort works if needed (e.g. by date if we had one, or just keep file order/alphabetical)
-    // For now, let's return them as is.
-    return allWorksData;
+    // Sort works by order field (ascending), then by title as fallback
+    return allWorksData.sort((a, b) => {
+        if (a.order !== b.order) {
+            return a.order - b.order;
+        }
+        return a.title.localeCompare(b.title);
+    });
 }
 
 export function getWork(slug: string): Work | undefined {
@@ -83,6 +89,7 @@ export function getWork(slug: string): Work | undefined {
         id: slug,
         slug: slug,
         title: data.title,
+        order: data.order ?? 0,
         thumbnail: data.thumbnail,
         directorRole: data.directorRole || 'director',
         description: content.trim(),

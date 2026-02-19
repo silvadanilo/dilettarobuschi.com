@@ -77,6 +77,11 @@ export default config({
             format: { contentField: 'description' },
             schema: {
                 title: fields.slug({ name: { label: 'Title' } }),
+                order: fields.integer({
+                    label: 'Display Order',
+                    defaultValue: 0,
+                    validation: { min: 0 },
+                }),
                 thumbnail: fields.image({ label: 'Thumbnail', directory: 'public/images/works', publicPath: '/images/works/' }),
                 directorRole: fields.select({
                     label: 'Director Role',
