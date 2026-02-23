@@ -58,7 +58,7 @@ export default config({
             path: 'src/content/about.en',
             format: { contentField: 'content' },
             schema: {
-                image: fields.text({ label: 'Image URL' }),
+                image: fields.image({ label: 'Profile Image', directory: 'public/images/about', publicPath: '/images/about/' }),
                 content: fields.document({
                     label: 'Content',
                     formatting: true,
